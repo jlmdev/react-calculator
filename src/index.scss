@@ -10,3 +10,43 @@ body {
   margin: 0;
   min-height: 100%;
 }
+
+.calculatorDisplay {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 50px 50px 50px 50px;
+  grid-template-rows: 50px 50px 50px 50px 50px 50px;
+}
+
+.calculatorDisplay li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 5px;
+  color: whitesmoke;
+}
+
+.calculatorDisplay .readout {
+  grid-area: 1/1/1/5;
+  background-color: rgb(44, 44, 44);
+  text-align: right;
+}
+
+.clear {
+  grid-area: 2/1/2/4;
+  background-color: darkslategray;
+}
+
+.zeroButton {
+  grid-area: 6/1/6/3;
+  background-color: gray;
+}
+
+.operatorButton {
+  background-color: orange;
+}
+
+.digitButton {
+  background-color: gray;
+}
