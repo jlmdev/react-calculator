@@ -5,14 +5,22 @@ export function Calculator() {
   const [display, setDisplay] = useState(0)
   const [firstOperand, setFirstOperand] = useState(null)
   const [operator, setOperator] = useState(null)
+  const [secondOperand, setSecondOperand] = useState(null)
 
   // event handler functions
   function clickClearButton(event) {
     setDisplay(0)
+    setFirstOperand(null)
+    setOperator(null)
+    setSecondOperand(null)
   }
 
   function clickDigit(digit) {
-    setFirstOperand(digit)
+    if (operator === null) {
+      setFirstOperand(digit)
+    } else {
+      setSecondOperand(digit)
+    }
   }
 
   function clickOperator(chosenOperator) {
