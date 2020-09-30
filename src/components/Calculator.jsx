@@ -8,6 +8,7 @@ export function Calculator() {
   const [secondOperand, setSecondOperand] = useState(null)
 
   // event handler functions
+
   function clickClearButton(event) {
     setDisplay(0)
     setFirstOperand(null)
@@ -18,14 +19,38 @@ export function Calculator() {
   function clickDigit(digit) {
     if (operator === null) {
       setFirstOperand(digit)
+      setDisplay(digit)
     } else {
       setSecondOperand(digit)
+      setDisplay(digit)
     }
   }
 
   function clickOperator(chosenOperator) {
     setOperator(chosenOperator)
     console.log(chosenOperator)
+  }
+
+  function clickEquals() {
+    let result
+
+    if (operator === '+') {
+      result = Number(firstOperand) + Number(secondOperand)
+    }
+
+    if (operator === '-') {
+      result = Number(firstOperand) - Number(secondOperand)
+    }
+
+    if (operator === '*') {
+      result = Number(firstOperand) * Number(secondOperand)
+    }
+
+    if (operator === '/') {
+      result = Number(firstOperand) / Number(secondOperand)
+    }
+
+    setDisplay(result)
   }
 
   return (
@@ -101,7 +126,9 @@ export function Calculator() {
             0
           </button>
           <button className="button">.</button>
-          <button className="button op">&#61;</button>
+          <button className="button op" onClick={clickEquals}>
+            &#61;
+          </button>
         </div>
       </div>
     </main>
