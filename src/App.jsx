@@ -1,26 +1,29 @@
 import React, { useState } from 'react'
 
-function handleOperandClick(props) {}
+function handleClick(event) {
+  console.log('click')
+}
 
 function App() {
   const [result, setResult] = useState(0)
-  const [operands, setOperands] = useState([])
+  const [firstOperandArray, setFirstOperandArray] = useState([])
+  const [secondOperandArray, setSecondOperandArray] = useState([])
+  const [enableSecondOperandArray, setEnableSecondOperandArray] = useState(
+    false
+  )
   const [operators, setOperators] = useState([])
+  const [display, setDisplay] = useState(0)
+  const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  const operatorButtons = ['/', '*', '-', '+']
 
   return (
     <div>
       <ul className="calculatorDisplay">
-        <li className="readout">{result}</li>
+        <li className="readout">{display}</li>
         <li className="clear">AC</li>
-        <li className="operatorButton" operatorValue="/">
-          /
-        </li>
-        <li
-          className="digitButton"
-          onClick="handleOperandClick"
-          operandValue="7"
-        >
-          7
+        <li className="operatorButton">/</li>
+        <li className="digitButton">
+          <input type="button" onClick={handleClick} />
         </li>
         <li className="digitButton">8</li>
         <li className="digitButton">9</li>
