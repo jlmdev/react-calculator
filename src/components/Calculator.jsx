@@ -2,15 +2,15 @@ import React, { useState } from 'react'
 
 export function Calculator() {
   // States
-  const [display, setDisplay] = useState(0)
-  const [firstOperand, setFirstOperand] = useState(null)
+  const [display, setDisplay] = useState('')
+  const [firstOperand, setFirstOperand] = useState('')
   const [operator, setOperator] = useState(null)
-  const [secondOperand, setSecondOperand] = useState(null)
+  const [secondOperand, setSecondOperand] = useState('null')
 
   // event handler functions
 
   function clickClearButton(event) {
-    setDisplay(0)
+    setDisplay('')
     setFirstOperand(null)
     setOperator(null)
     setSecondOperand(null)
@@ -18,8 +18,8 @@ export function Calculator() {
 
   function clickDigit(digit) {
     if (operator === null) {
-      setFirstOperand(digit)
-      setDisplay(digit)
+      setFirstOperand(`${firstOperand}${digit}`)
+      setDisplay(`${firstOperand}${digit}`)
     } else {
       setSecondOperand(digit)
       setDisplay(digit)
