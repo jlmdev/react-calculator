@@ -18,11 +18,19 @@ export function Calculator() {
 
   function clickDigit(digit) {
     if (operator === null) {
-      setFirstOperand(`${firstOperand}${digit}`)
-      setDisplay(`${firstOperand}${digit}`)
+      if (firstOperand.includes('.') && digit === '.') {
+        // Do Nothing
+      } else {
+        setFirstOperand(`${firstOperand}${digit}`)
+        setDisplay(`${firstOperand}${digit}`)
+      }
     } else {
-      setSecondOperand(`${secondOperand}${digit}`)
-      setDisplay(`${secondOperand}${digit}`)
+      if (secondOperand.includes('.') && digit === '.') {
+        // Do Nothing
+      } else {
+        setSecondOperand(`${secondOperand}${digit}`)
+        setDisplay(`${secondOperand}${digit}`)
+      }
     }
   }
 
@@ -50,7 +58,7 @@ export function Calculator() {
       result = Number(firstOperand) / Number(secondOperand)
     }
 
-    setDisplay(result.toString())
+    setDisplay(parseFloat(result.toFixed(8)).toString())
   }
 
   return (
@@ -125,7 +133,9 @@ export function Calculator() {
           <button className="button x2" onClick={() => clickDigit(0)}>
             0
           </button>
-          <button className="button">.</button>
+          <button className="button" onClick={() => clickDigit('.')}>
+            .
+          </button>
           <button className="button op" onClick={clickEquals}>
             &#61;
           </button>
