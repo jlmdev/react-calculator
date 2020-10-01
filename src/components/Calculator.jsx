@@ -66,11 +66,11 @@ export function Calculator() {
       <div className="calculator">
         <div className="display">{display}</div>
         <div className="buttons">
-          <button className="button fn" onClick={clickClearButton}>
+          <button className="button fn ac" onClick={clickClearButton}>
             AC
           </button>
-          <button className="button fn">&#177;</button>
-          <button className="button fn">&#37;</button>
+          {/* <button className="button fn">&#177;</button>
+          <button className="button fn">&#37;</button> */}
           <button
             className="button op"
             onClick={() => {
