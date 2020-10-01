@@ -9,6 +9,7 @@ export function Calculator() {
 
   // event handler functions
 
+  // Clear button click handler
   function clickClearButton(event) {
     setDisplay('0')
     setFirstOperand('')
@@ -16,6 +17,9 @@ export function Calculator() {
     setSecondOperand('')
   }
 
+  // Digit and decimal click handler
+  // Includes logic to limit to one decimal entry and determine which operand
+  // is being affected.
   function clickDigit(digit) {
     if (operator === null) {
       if (firstOperand.includes('.') && digit === '.') {
@@ -34,11 +38,13 @@ export function Calculator() {
     }
   }
 
+  // Operator button click handler
   function clickOperator(chosenOperator) {
     setOperator(chosenOperator)
     console.log(chosenOperator)
   }
 
+  // Equal button even handler
   function clickEquals() {
     let result
 
@@ -61,6 +67,7 @@ export function Calculator() {
     setDisplay(parseFloat(result.toFixed(8)).toString())
   }
 
+  // Main component (keypad)
   return (
     <main>
       <div className="calculator">
@@ -69,8 +76,6 @@ export function Calculator() {
           <button className="button fn ac" onClick={clickClearButton}>
             AC
           </button>
-          {/* <button className="button fn">&#177;</button>
-          <button className="button fn">&#37;</button> */}
           <button
             className="button op"
             onClick={() => {
